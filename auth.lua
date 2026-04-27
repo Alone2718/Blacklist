@@ -2,20 +2,33 @@ local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
 local LocalPlayer = Players.LocalPlayer
 
+-- ==========================================
+-- GIGA BLACKLIST DATABASE 🛑
+-- ==========================================
+-- Put the UserIds of the bozos here (They get the L_Bozo_Tracer punishment)
 local blacklist = {
     12345678,
     87654321
 }
 
-local isBlacklisted = false
-for _, id in ipairs(blacklist) do
-    if LocalPlayer.UserId == id then
-        isBlacklisted = true
-        break
-    end
+-- ==========================================
+-- FAST ROUTING LOGIC 🧠
+-- ==========================================
+-- Default to Whitelist so the script is PUBLIC for everyone 🤑
+local authStatus = "Whitelist" 
+
+-- FAST LOOKUP: Instantly checks if they are on the naughty list 🗿
+if table.find(blacklist, LocalPlayer.UserId) then
+    authStatus = "Blacklist"
 end
 
+-- ==========================================
+-- EXCLUSIVE FORCEFIELD TOKEN 🛡️
+-- ==========================================
+-- Creating the invisible ForceField in StarterGui (No one expects this 💀)
 local ff = Instance.new("ForceField")
 ff.Visible = false
-ff.Name = isBlacklisted and "Blacklist" or "Whitelist"
+ff.Name = authStatus
 ff.Parent = StarterGui
+
+print("God-Eye Auth Deployed: Player flagged as " .. authStatus)
