@@ -7,7 +7,7 @@ local LocalPlayer = Players.LocalPlayer
 -- ==========================================
 -- Put the UserIds of the bozos here (They get the L_Bozo_Tracer punishment)
 local blacklist = {
-    12345678,
+    7975092412,
     87654321
 }
 
